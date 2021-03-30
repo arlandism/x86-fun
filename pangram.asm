@@ -4,7 +4,6 @@ global pangram
 ;; as the adjusted beginning
 ;; i.e. ascii_idx - 65 for capital letters
 ;; ascii_idx - 32 - 65 for lowercase
-;; assumes valid input
 pangram:
   xor r9, r9 ;; offset register
   xor r10, r10 ;; tmp used for random calcs
@@ -35,10 +34,7 @@ _next_byte:
   jmp _start_loop
 
 _end:
-  xor r8, r8
-  mov r8, 0x1
-  cmp rax, 0x3ffffff
-  cmove rax, r8
-  mov r8, 0x0
-  cmovnz rax,r8
+  xor rax, 0x3ffffff ;;this relies on the idea that a number xor itself is 0
+  setz al ;; if all bits are set then the 0 bit will have been set
+  and rax, 0xff ;; clear upper bits
 	ret
