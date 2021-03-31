@@ -9,7 +9,6 @@ pangram:
   xor rax, rax
 _start_loop:
   movzx r8, byte [rdi]
-
   cmp r8, 0x0
   jz _end
 
@@ -32,7 +31,7 @@ _next_byte:
   jmp _start_loop
 
 _end:
-  xor rax, 0x3ffffff ;;this relies on the idea that a number xor itself is 0
+  xor rax, 0x3ffffff ;; this relies on the idea that a number xor itself is 0
   setz al ;; if all bits are set then the 0 bit will have been set
   and rax, 0xff ;; clear upper bits
 	ret
