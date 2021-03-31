@@ -5,12 +5,11 @@ global pangram
 ;; i.e. ascii_idx - 65 for capital letters
 ;; ascii_idx - 32 - 65 for lowercase
 pangram:
-  xor r9, r9 ;; offset register
   xor r10, r10 ;; tmp used for random calcs
   xor rax, rax
 _start_loop:
   xor r8, r8 ;; holds the current byte
-  mov r8b, byte [r9, rdi]
+  mov r8b, byte [rdi]
 
   cmp r8, 0x0
   jz _end
@@ -30,7 +29,7 @@ _start_loop:
   or rax, r10
 
 _next_byte:
-  inc r9
+  inc rdi
   jmp _start_loop
 
 _end:
