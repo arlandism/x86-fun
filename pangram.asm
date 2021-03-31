@@ -8,8 +8,7 @@ pangram:
   xor r10, r10 ;; tmp used for random calcs
   xor rax, rax
 _start_loop:
-  xor r8, r8 ;; holds the current byte
-  mov r8b, byte [rdi]
+  movzx r8, byte [rdi]
 
   cmp r8, 0x0
   jz _end
