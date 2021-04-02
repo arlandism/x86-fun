@@ -13,3 +13,7 @@ section .rodata
 
 PI: dd 3.14159265359
 THREE: dd 3.0
+
+    ;; questions:
+    ;; why did hard-coding 3 vs 3.0 not work?
+    ;; is it feasible to use the floating point stack machine?
